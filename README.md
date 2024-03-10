@@ -9,13 +9,13 @@ By default, trains are marked with an blip on the map. You can disable this by s
 
 **PLEASE NOTE THAT YOU MUST HAVE THE CHOP SHOP UPDATE INSTALLED FOR THIS MOD TO WORK**. Read the installation instructions carefully. If you have modified trains.xml, read the installation instructions in MANUAL INSTALL. If you still have questions, write me to Discord: https://discord.gg/vvxmKP5y5J
 
-# INSTALL
+# Install
 1. Download ScriptHookV and ScriptHookVDotNet
 2. Move dll, ini and pdb files to the scripts folder (If there is no such folder, create one)
 3. Use OpenIV to replace the trains.xml file in update/update.rpf/common/data/levels/gta5
 
 
-# MANUAL INSTALL (if you have a modified trains.xml file)
+# manual install (if you have a modified trains.xml file)
 
 1. Download ScriptHookV and ScriptHookVDotNet
 2. Move dll, ini and pdb files to the scripts folder (If there is no such folder, create one)
