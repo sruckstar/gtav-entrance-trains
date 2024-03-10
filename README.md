@@ -15,7 +15,7 @@ By default, trains are marked with an blip on the map. You can disable this by s
 3. Use OpenIV to replace the trains.xml file in update/update.rpf/common/data/levels/gta5
 
 
-# manual install (if you have a modified trains.xml file)
+# Manual install (if you have a modified trains.xml file)
 
 1. Download ScriptHookV and ScriptHookVDotNet
 2. Move dll, ini and pdb files to the scripts folder (If there is no such folder, create one)
