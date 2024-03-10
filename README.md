@@ -1,4 +1,4 @@
-# gtav-entrance-trains
+# Entrance Trains
 The mod adds the ability to stop and hijack trains.
 
 Each train now has a driver, killing him will put you in the cab and start the train. The driver will react to obstacles and will try to stop if he sees an obstacle ahead. However, at night or in bad weather, the driver's reaction may be delayed, so keep that in mind. If you kill the engineer while the train is moving, the train will continue to move on inertia for a while until it comes to a complete stop.
