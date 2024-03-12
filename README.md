@@ -12,13 +12,13 @@ By default, trains are marked with a blip on the map. You can disable this by se
 # Install
 1. Download ScriptHookV and ScriptHookVDotNet
 2. Move .dll, .ini, and .pdb files to the scripts folder (If there is no such folder, create one)
-3. Use OpenIV to replace the trains.xml file in update/update.rpf/common/data/levels/gta5
+3. Use OpenIV to replace the trains.xml file in mods/update/update.rpf/common/data/levels/gta5
 
 
 # Manual install (if you have a modified trains.xml file)
 
 1. Download ScriptHookV and ScriptHookVDotNet
 2. Move .dll, .ini, and .pdb files to the scripts folder (If there is no such folder, create one)
-3. Open the trains.xml file in update/update.rpf/common/data/levels/gta5
+3. Open the trains.xml file in mods/update/update.rpf/common/data/levels/gta5
 4. Use the search to find all mentions of "freight" and replace them with "freight2" (unquoted)
 5. Save your changes
