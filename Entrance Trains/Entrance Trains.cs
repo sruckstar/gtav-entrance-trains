@@ -19,6 +19,7 @@ namespace EntranceTrains
 
         Random rnd = new Random();
         public bool train_created = false;
+        float acceleration_start = 0.1f;
         float acceleration = 0.01f;
         float braking = 0.01f;
         float emergency_break = 0.1f;
@@ -92,7 +93,7 @@ namespace EntranceTrains
                     damn_train.Name = "Damn Train";
                     damn_train.IsShortRange = true;
                 }
-                
+
 
                 train_created = true;
 
@@ -342,7 +343,7 @@ namespace EntranceTrains
         {
             float current_speed = train.Speed;
 
-            switch(pedal)
+            switch (pedal)
             {
                 case 0:
                     current_speed += acceleration;
@@ -368,18 +369,25 @@ namespace EntranceTrains
 
         void TrainPlayerControls(Vehicle train)
         {
-            float speed = train.Speed;
             if (Function.Call<bool>(Hash.IS_PED_IN_VEHICLE, Game.Player.Character, train, false))
             {
-                if (Function.Call<bool>(Hash.IS_CONTROL_PRESSED, 0, 71) && speed < 60.0)
+                float speed = train.Speed;
+                if (Function.Call<bool>(Hash.IS_CONTROL_PRESSED, 0, 71) && speed < 10.0)
                 {
-                    speed += acceleration;
+                    speed += acceleration_start;
                 }
                 else
                 {
-                    if (Function.Call<bool>(Hash.IS_CONTROL_PRESSED, 0, 72) && speed > 0.0)
+                    if (Function.Call<bool>(Hash.IS_CONTROL_PRESSED, 0, 71) && (speed >= 10.0 && speed < 60.0))
                     {
-                        speed -= emergency_break;
+                        speed += acceleration;
+                    }
+                    else
+                    {
+                        if (Function.Call<bool>(Hash.IS_CONTROL_PRESSED, 0, 72) && speed > 0.0)
+                        {
+                            speed -= emergency_break;
+                        }
                     }
                 }
 
@@ -387,10 +395,10 @@ namespace EntranceTrains
                 {
                     speed = 0.0f;
                 }
-            }
 
-            Function.Call(Hash.SET_TRAIN_SPEED, train, speed);
-            Function.Call(Hash.SET_TRAIN_CRUISE_SPEED, train, speed);
+                Function.Call(Hash.SET_TRAIN_SPEED, train, speed);
+                Function.Call(Hash.SET_TRAIN_CRUISE_SPEED, train, speed);
+            }
         }
 
         void DeleteVanillaTrains()
@@ -407,7 +415,10 @@ namespace EntranceTrains
             {
                 foreach (Vehicle veh in World.GetAllVehicles())
                 {
-                    veh.Delete();
+                    if (Function.Call<bool>(Hash.IS_MISSION_TRAIN, veh))
+                    {
+                        veh.Delete();
+                    }
                 }
             }
 
@@ -436,5 +447,3 @@ namespace EntranceTrains
         }
     }
 }
-
-
