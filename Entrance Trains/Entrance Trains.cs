@@ -19,6 +19,7 @@ namespace EntranceTrains
 
         Random rnd = new Random();
         public bool train_created = false;
+        public bool radio_enabled = false;
         float acceleration_start = 0.1f;
         float acceleration = 0.01f;
         float braking = 0.01f;
@@ -96,7 +97,6 @@ namespace EntranceTrains
 
 
                 train_created = true;
-
                 max_distance = Game.Player.Character.Position.DistanceTo(main_train.Position) + 500.0f;
             }
 
@@ -112,6 +112,7 @@ namespace EntranceTrains
             {
                 DeleteModTrain();
                 train_created = false;
+
                 int nearestIndex = FindNearestIndex(Game.Player.Character.Position, coords);
                 main_train = CreateTrain(nearestIndex);
                 main_driver = main_train.CreatePedOnSeat(VehicleSeat.Driver, PedHash.Lsmetro01SMM);
@@ -125,6 +126,7 @@ namespace EntranceTrains
                 }
 
                 train_created = true;
+                max_distance = Game.Player.Character.Position.DistanceTo(main_train.Position) + 500.0f;
             }
         }
 
@@ -413,12 +415,10 @@ namespace EntranceTrains
         {
             if (main_train != null && main_train.Exists())
             {
-                foreach (Vehicle veh in World.GetAllVehicles())
+                unsafe
                 {
-                    if (Function.Call<bool>(Hash.IS_MISSION_TRAIN, veh))
-                    {
-                        veh.Delete();
-                    }
+                    int handle = main_train.Handle;
+                    Function.Call(Hash.DELETE_MISSION_TRAIN, &handle);
                 }
             }
 
